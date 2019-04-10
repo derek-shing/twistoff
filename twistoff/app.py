@@ -2,6 +2,7 @@
 """Main application and routing logic for TwitOff."""
 from flask import Flask, render_template
 from twistoff.models import DB, User
+from twistoff.twitter import *
 
 from os import getenv
 from dotenv import load_dotenv
@@ -17,6 +18,7 @@ def create_app():
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
     app.config['ENV'] = getenv('FLASK_ENV')
     DB.init_app(app)
+
 
     @app.route('/')
     def root():
